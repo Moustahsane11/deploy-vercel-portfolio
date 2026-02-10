@@ -4,6 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useEffect, useState } from "react"
 import { appWithTranslation } from 'next-i18next';
+import nextI18nConfig from '../next-i18next.config';
 
 import "../public/assets/css/bootstrap.min.css"
 import "../public/assets/css/iconoir.css"
@@ -32,4 +33,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default appWithTranslation(MyApp);
+export default appWithTranslation(MyApp, nextI18nConfig);
