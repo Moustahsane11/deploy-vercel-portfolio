@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import data from "../../util/projects.json"
+import data from "../../util/Projects.json"
 import ImageLightbox from "@/components/elements/ImageLightbox"
 
 export default function ProjectDetails() {
