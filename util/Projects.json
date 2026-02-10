@@ -1,0 +1,47 @@
+[ {
+    "id": 1,
+    "headerImage": "/assets/images/project-dt-1.jpeg",
+    "image2": "/assets/Images/project-dt-1.jpeg",
+    "image3": "/assets/Image_Project/Projet1/BG1.png",
+    "image4": "/assets/Image_Project/Projet1/BG4.png",
+    "image5": "/assets/Image_Project/Projet1/BG3.png",
+    "image6": "/assets/Image_Project/Projet1/BG2.png",
+    "bottomImage": "/assets/images/project-dt-1.jpeg",
+    "year": "2023"
+  },
+{
+  "id": 2,
+    "headerImage": "/assets/Image_Project/Projet2/Banner.png",
+    "image2": "/assets/Image_Project/Projet2/Banner.png",
+    "image3": "/assets/Image_Project/Projet2/BG1.png",
+    "image4": "/assets/Image_Project/Projet2/BG4.png",
+    "image5": "/assets/Image_Project/Projet2/BG3.png",
+    "image6": "/assets/Image_Project/Projet2/BG2.png",
+    "bottomImage": "/assets/images/project-dt-1.jpeg",
+    "year": "2025"
+},
+{
+  "id": 3,
+  "headerImage": "/assets/Image_Project/Projet3/Banner.png",
+  "image2": "/assets/Image_Project/Projet3/BG1.png",
+  "image3": "/assets/Image_Project/Projet3/BG2.png",
+  "image4": "/assets/Image_Project/Projet3/BG3.png",
+  "image5": "/assets/Image_Project/Projet3/BG4.png",
+  "image6": "/assets/Image_Project/Projet3/BG5.png",
+  "bottomImage": "/assets/Image_Project/Projet3/Preview.png",
+  "year": "2025"
+},
+
+{
+  "id": 4,
+  "headerImage": "/assets/Image_Project/Projet4/Banner.png",
+  "image2": "/assets/Image_Project/Projet4/BG1.png",
+  "image3": "/assets/Image_Project/Projet4/BG2.png",
+  "image4": "/assets/Image_Project/Projet4/BG3.png",
+  "image5": "/assets/Image_Project/Projet4/BG4.png",
+  "image6": "/assets/Image_Project/Projet4/BG5.png",
+  "bottomImage": "/assets/Image_Project/Projet4/Preview.png",
+  "year": "2024"
+}
+
+]
