@@ -52,7 +52,7 @@ export default function Home() {
                                 <div className="credential-edc-exp credential-education">
                                     <h2 data-aos="fade-up">{t('education')}</h2>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2019 - 2019</h4>
+                                        <h4>2019 - 2020 </h4>
                                         <h3>{t('education1Title')}</h3>
                                         <h5>{t('education1Institution')}</h5>
                                         <p>{t('education1Description')}</p>

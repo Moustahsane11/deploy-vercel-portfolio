@@ -3,6 +3,7 @@ import Link from "next/link"
 import TechnicalSkills from "@/components/elements/TechnicalSkills"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import CountUp from 'react-countup'
 
 export default function Home() {
     const { t } = useTranslation('common')
@@ -138,15 +139,21 @@ export default function Home() {
                                 <div className="about-client-box info-box shadow-box">
                                     <div className="clients d-flex align-items-start gap-24 justify-content-center">
                                         <div className="client-item">
-                                            <h1>2.5</h1>
+                                            <h1>
+                                                <CountUp start={0} end={2.5} decimals={1} duration={2} separator="," />
+                                            </h1>
                                             <p>{t('homeYearsExp')}</p>
                                         </div>
                                         <div className="client-item">
-                                            <h1>10+</h1>
+                                            <h1>
+                                                <CountUp start={0} end={10} duration={2} />+
+                                            </h1>
                                             <p>{t('homeClients')}</p>
                                         </div>
                                         <div className="client-item">
-                                            <h1>15+</h1>
+                                            <h1>
+                                                <CountUp start={0} end={15} duration={2} />+
+                                            </h1>
                                             <p>{t('homeTotalProjects')}</p>
                                         </div>
                                     </div>

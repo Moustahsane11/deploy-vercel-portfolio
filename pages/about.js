@@ -57,6 +57,11 @@ export default function About() {
                                             <p className="type">{t('education1Institution')}</p>
                                         </li>
                                         <li>
+                                            <p className="date">2020 - 2021</p>
+                                            <h2>{t('education1bTitle')}</h2>
+                                            <p className="type">{t('education1bInstitution')}</p>
+                                        </li>
+                                        <li>
                                             <p className="date">2021 - 2023</p>
                                             <h2>{t('education2Title')}</h2>
                                             <p className="type">{t('education2Institution')}</p>
