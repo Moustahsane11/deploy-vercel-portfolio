@@ -52,14 +52,9 @@ export default function About() {
                                     <h3>{t('education')}</h3>
                                     <ul>
                                         <li>
-                                            <p className="date">2019 - 2020</p>
-                                            <h2>{t('education1Title')}</h2>
-                                            <p className="type">{t('education1Institution')}</p>
-                                        </li>
-                                        <li>
-                                            <p className="date">2020 - 2021</p>
-                                            <h2>{t('education1bTitle')}</h2>
-                                            <p className="type">{t('education1bInstitution')}</p>
+                                            <p className="date">2023 - 2024</p>
+                                            <h2>{t('education3Title')}</h2>
+                                            <p className="type">{t('education3Institution')}</p>
                                         </li>
                                         <li>
                                             <p className="date">2021 - 2023</p>
@@ -67,9 +62,14 @@ export default function About() {
                                             <p className="type">{t('education2Institution')}</p>
                                         </li>
                                         <li>
-                                            <p className="date">2023 - 2024</p>
-                                            <h2>{t('education3Title')}</h2>
-                                            <p className="type">{t('education3Institution')}</p>
+                                            <p className="date">2020 - 2021</p>
+                                            <h2>{t('education1bTitle')}</h2>
+                                            <p className="type">{t('education1bInstitution')}</p>
+                                        </li>
+                                        <li>
+                                            <p className="date">2019 - 2020</p>
+                                            <h2>{t('education1Title')}</h2>
+                                            <p className="type">{t('education1Institution')}</p>
                                         </li>
                                     </ul>
                                 </div>

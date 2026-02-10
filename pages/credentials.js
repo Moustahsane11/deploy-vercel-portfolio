@@ -37,13 +37,13 @@ export default function Home() {
                                 <div className="credential-edc-exp credential-experience">
                                     <h2 data-aos="fade-up">{t('experience')}</h2>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2007 - 2017</h4>
+                                        <h4>{t('experience1Date')}</h4>
                                         <h3>{t('experience1Title')}</h3>
                                         <h5>{t('experience1Company')}</h5>
                                         <p>{t('experience1Description')}</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2017 - 2023</h4>
+                                        <h4>{t('experience2Date')}</h4>
                                         <h3>{t('experience2Title')}</h3>
                                         <h5>{t('experience2Company')}</h5>
                                         <p>{t('experience2Description')}</p>
@@ -52,10 +52,10 @@ export default function Home() {
                                 <div className="credential-edc-exp credential-education">
                                     <h2 data-aos="fade-up">{t('education')}</h2>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2019 - 2020 </h4>
-                                        <h3>{t('education1Title')}</h3>
-                                        <h5>{t('education1Institution')}</h5>
-                                        <p>{t('education1Description')}</p>
+                                        <h4>2023 - 2024</h4>
+                                        <h3>{t('education3Title')}</h3>
+                                        <h5>{t('education3Institution')}</h5>
+                                        <p>{t('education3Description')}</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
                                         <h4>2021 - 2023</h4>
@@ -64,10 +64,16 @@ export default function Home() {
                                         <p>{t('education2Description')}</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2023 - {t('present')}</h4>
-                                        <h3>{t('education3Title')}</h3>
-                                        <h5>{t('education3Institution')}</h5>
-                                        <p>{t('education3Description')}</p>
+                                        <h4>2020 - 2021</h4>
+                                        <h3>{t('education1bTitle')}</h3>
+                                        <h5>{t('education1bInstitution')}</h5>
+                                        <p>{t('education1bDescription')}</p>
+                                    </div>
+                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
+                                        <h4>2019 - 2020</h4>
+                                        <h3>{t('education1Title')}</h3>
+                                        <h5>{t('education1Institution')}</h5>
+                                        <p>{t('education1Description')}</p>
                                     </div>
                                 </div>
                                 <div className="skills-wrap">
