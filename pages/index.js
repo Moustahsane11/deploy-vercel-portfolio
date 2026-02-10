@@ -140,19 +140,39 @@ export default function Home() {
                                     <div className="clients d-flex align-items-start gap-24 justify-content-center">
                                         <div className="client-item">
                                             <h1>
-                                                <CountUp start={0} end={2.5} decimals={1} duration={2} separator="," />
+                                                <CountUp 
+                                                    start={0} 
+                                                    end={2.5} 
+                                                    decimals={1} 
+                                                    duration={2} 
+                                                    separator=","
+                                                    enableScrollSpy={true}
+                                                    scrollSpyOnce={true}
+                                                />
                                             </h1>
                                             <p>{t('homeYearsExp')}</p>
                                         </div>
                                         <div className="client-item">
                                             <h1>
-                                                <CountUp start={0} end={10} duration={2} />+
+                                                <CountUp 
+                                                    start={0} 
+                                                    end={10} 
+                                                    duration={2}
+                                                    enableScrollSpy={true}
+                                                    scrollSpyOnce={true}
+                                                />+
                                             </h1>
                                             <p>{t('homeClients')}</p>
                                         </div>
                                         <div className="client-item">
                                             <h1>
-                                                <CountUp start={0} end={15} duration={2} />+
+                                                <CountUp 
+                                                    start={0} 
+                                                    end={15} 
+                                                    duration={2}
+                                                    enableScrollSpy={true}
+                                                    scrollSpyOnce={true}
+                                                />+
                                             </h1>
                                             <p>{t('homeTotalProjects')}</p>
                                         </div>
