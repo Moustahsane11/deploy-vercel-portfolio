@@ -107,7 +107,7 @@ export default function Contact() {
                                 <ul className="social-links d-flex align-center" data-aos="zoom-in">
                                     <li><Link className="shadow-box" href="https://www.linkedin.com/in/mustapha-moustahsane-527b3a2b6/" target="_blank" rel="noopener noreferrer"><i className="iconoir-linkedin" /></Link></li>
                                     <li><Link className="shadow-box" href="https://x.com/mustaphamstn" target="_blank" rel="noopener noreferrer"><i className="iconoir-twitter" /></Link></li>
-                                    <li><Link className="shadow-box" href="https://rb.gy/l9qjbn" target="_blank" rel="noopener noreferrer"><i className="iconoir-internet" /></Link></li>
+                                    <li><Link className="shadow-box" href="https://moustahsane.vercel.app/de/contact" target="_blank" rel="noopener noreferrer"><i className="iconoir-internet" /></Link></li>
                                 </ul>
                             </div>
                             <div data-aos="zoom-in" className="contact-form">

@@ -4,9 +4,21 @@ import TechnicalSkills from "@/components/elements/TechnicalSkills"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import CountUp from 'react-countup'
+import { useRouter } from "next/router"
 
 export default function Home() {
     const { t } = useTranslation('common')
+    const router = useRouter()
+
+    // Calculate years of experience from start date (04/07/2023) to today with one decimal place
+    const yearsExperienceRaw = (Date.now() - new Date('2023-07-04').getTime()) / (1000 * 60 * 60 * 24 * 365)
+    const yearsExperience = Math.max(0, Number(yearsExperienceRaw.toFixed(1)))
+    const localeForNumber = router.locale === 'fr' ? 'fr-FR' : router.locale === 'de' ? 'de-DE' : 'en-US'
+    const yearsExperienceText = yearsExperience.toLocaleString(
+        localeForNumber,
+        { minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    )
+    const decimalChar = router.locale === 'fr' || router.locale === 'de' ? ',' : '.'
 
     return (
         <>
@@ -25,7 +37,7 @@ export default function Home() {
                                     <div className="infos">
                                         <h4>{t('homeRole')}</h4>
                                         <h1>{t('name')}.</h1>
-                                        <p>{t('homeIntro')}</p>
+                                        <p>{t('homeIntro', { years: yearsExperienceText })}</p>
                                         <Link href="/about" className="about-btn">
                                             <img src="/assets/images/icon.svg" alt="Button" />
                                         </Link>
@@ -114,6 +126,9 @@ export default function Home() {
                                                 <Link href="https://x.com/mustaphamstn" target="_blank" rel="noopener noreferrer">
                                                     <i className="iconoir-twitter" />
                                                 </Link>
+                                                <Link href="https://github.com/Moustahsane11" target="_blank" rel="noopener noreferrer">
+                                                    <i className="iconoir-github" />
+                                                </Link>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">
                                                 <div className="infos">
@@ -142,8 +157,9 @@ export default function Home() {
                                             <h1>
                                                 <CountUp 
                                                     start={0} 
-                                                    end={2.5} 
+                                                    end={yearsExperience} 
                                                     decimals={1} 
+                                                    decimal={decimalChar}
                                                     duration={2} 
                                                     separator=","
                                                     enableScrollSpy={true}

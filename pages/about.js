@@ -2,9 +2,20 @@ import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from "next/router"
 
 export default function About() {
     const { t } = useTranslation('common')
+    const router = useRouter()
+
+    // Calculate years of experience from start date (04/07/2023) to today with one decimal place
+    const yearsExperienceRaw = (Date.now() - new Date('2023-07-04').getTime()) / (1000 * 60 * 60 * 24 * 365)
+    const yearsExperience = Math.max(0, Number(yearsExperienceRaw.toFixed(1)))
+    const localeForNumber = router.locale === 'fr' ? 'fr-FR' : router.locale === 'de' ? 'de-DE' : 'en-US'
+    const yearsExperienceText = yearsExperience.toLocaleString(
+        localeForNumber,
+        { minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    )
 
     return (
         <>
@@ -25,7 +36,7 @@ export default function About() {
                                 <div className="about-details-inner shadow-box">
                                     <img src="/assets/images/icon2.png" alt="Star" />
                                     <h1>{t('name')}</h1>
-                                    <p>{t('aboutDescription')}</p>
+                                    <p>{t('aboutDescription', { years: yearsExperienceText })}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,6 +97,9 @@ export default function About() {
                                                 </Link>
                                                 <Link href="https://x.com/mustaphamstn" target="_blank" rel="noopener noreferrer">
                                                     <i className="iconoir-twitter" />
+                                                </Link>
+                                                <Link href="https://github.com/Moustahsane11" target="_blank" rel="noopener noreferrer">
+                                                    <i className="iconoir-github" />
                                                 </Link>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">

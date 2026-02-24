@@ -12,13 +12,15 @@ const skillsData = {
     },
     backend: {
         skills: [
-            { name: 'Laravel', percentage: 85 },
-            { name: 'C#', percentage: 80 },
-            { name: 'ASP.NET', percentage: 75 },
-            { name: '.NET Core MVC', percentage: 80 },
+            
+            { name: 'C#', percentage: 90 },
+            { name: 'ASP.NET', percentage: 85 },
+            { name: '.NET Core MVC', percentage: 90 },
             { name: '.NET Core Web API', percentage: 80 },
+            { name: 'Laravel', percentage: 85 },
             { name: 'Python', percentage: 70 },
             { name: 'Odoo', percentage: 65 },
+
         ]
     },
     databases: {

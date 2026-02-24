@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "Mustapha Moustahsane",
   "navHome": "Startseite",
   "navAbout": "Über mich",
@@ -8,7 +8,7 @@
   "letsTalk": "Lass uns reden",
   "footerRights": "Alle Rechte vorbehalten von",
   "homeRole": "Full-Stack Entwickler",
-  "homeIntro": "Full-Stack Entwickler mit Sitz in Casablanca, Marokko, mit 2,5 Jahren Berufserfahrung. Spezialisiert auf .NET Core, Laravel, React und Angular. Leidenschaftlich interessiert am Aufbau skalierbarer Webanwendungen und innovativer Lösungen.",
+  "homeIntro": "Full-Stack Entwickler mit Sitz in Casablanca, Marokko, mit {{years}} Jahren Berufserfahrung. Spezialisiert auf .NET Core, Laravel und React. Leidenschaftlich interessiert am Aufbau skalierbarer Webanwendungen und innovativer Lösungen.",
   "homeMarquee": "Neueste Arbeiten und ",
   "homeFeatured": "Highlights",
   "homeMoreAbout": "Mehr über mich",
@@ -31,7 +31,7 @@
   "skillsTools": "Tools & Workflow",
   "aboutMe": "Über mich",
   "aboutSelfSummary": "Persönliches Profil",
-  "aboutDescription": "Full-Stack Entwickler mit 2,5 Jahren Erfahrung, ansässig in Casablanca, Marokko. Motivierter und neugieriger Fachmann, entschlossen, technische Fähigkeiten zu vertiefen und durch Anpassungsfähigkeit zum Erfolg eines Unternehmens beizutragen. Spezialisiert auf Webentwicklung mit .NET Core, Laravel, React und Angular sowie auf Datenbankarchitektur und DevOps-Praktiken.",
+  "aboutDescription": "Full-Stack Entwickler mit {{years}} Jahren Erfahrung, ansässig in Casablanca, Marokko. Motivierter und neugieriger Fachmann, entschlossen, technische Fähigkeiten zu vertiefen und durch Anpassungsfähigkeit zum Erfolg eines Unternehmens beizutragen. Spezialisiert auf Webentwicklung mit .NET Core, Laravel, und React sowie auf Datenbankarchitektur und DevOps-Praktiken.",
   "phone": "+212 640-376131",
   "email": "moustahsanemustapha@gmail.com",
   "location": "Casablanca, Marokko",

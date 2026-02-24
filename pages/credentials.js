@@ -2,9 +2,21 @@ import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from "next/router"
 
 export default function Home() {
   const { t } = useTranslation('common');
+  const router = useRouter()
+  const currentLocale = router?.locale || 'en'
+
+  // Calculate years of experience from start date (04/07/2023) to today with one decimal place
+  const yearsExperienceRaw = (Date.now() - new Date('2023-07-04').getTime()) / (1000 * 60 * 60 * 24 * 365)
+  const yearsExperience = Math.max(0, Number(yearsExperienceRaw.toFixed(1)))
+  const localeForNumber = currentLocale === 'fr' ? 'fr-FR' : currentLocale === 'de' ? 'de-DE' : 'en-US'
+  const yearsExperienceText = yearsExperience.toLocaleString(
+    localeForNumber,
+    { minimumFractionDigits: 1, maximumFractionDigits: 1 }
+  )
 
     return (
         <>
@@ -32,7 +44,7 @@ export default function Home() {
                             <div className="credential-content flex-1">
                                 <div className="credential-about" data-aos="zoom-in">
                                     <h2>{t('aboutMe')}</h2>
-                                    <p>{t('aboutDescription')}</p>
+                                    <p>{t('aboutDescription', { years: yearsExperienceText })}</p>
                                 </div>
                                 <div className="credential-edc-exp credential-experience">
                                     <h2 data-aos="fade-up">{t('experience')}</h2>
@@ -119,21 +131,6 @@ export default function Home() {
                                             <h3 className="name">Java-Spring boot</h3>
                                             <p>{t('skillDescription')}</p>
                                         </div>                                                                    
-                                    </div>
-                                </div>
-                                <div className="skills-wrap awards-wrap">
-                                    <h2 data-aos="fade-up">{t('awards')}</h2>
-                                    <div className="d-grid skill-items gap-24 flex-wrap">
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <span className="percent">14 May 2020</span>
-                                            <h3 className="name">Bluebase</h3>
-                                            <p>{t('awardDescription')}</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <span className="percent">26 June 2018</span>
-                                            <h3 className="name">Demble</h3>
-                                            <p>{t('awardDescription')}</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
