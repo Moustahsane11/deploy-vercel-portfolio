@@ -39,6 +39,15 @@ const skillsData = {
             { name: 'Postman', percentage: 85 },
             { name: 'Installation de serveur', percentage: 75 },
         ]
+    },
+    network: {
+        skills: [
+            { name: 'Windows', percentage: 80 },
+            { name: 'Linux', percentage: 60 },
+            { name: 'PacketTracer', percentage: 50 },
+            { name: 'VMware', percentage: 60 },
+            { name: 'Fedora', percentage: 50 },
+        ]
     }
 }
 
@@ -151,7 +160,7 @@ export default function TechnicalSkills() {
                         aria-expanded={activeCategory === 'databases'}
                     >
                         <div className="category-title">
-                            <i className="iconoir-database" />
+                            <i className="iconoir-table" />
                             <h3>{t('skillsDatabases')}</h3>
                         </div>
                         <div className="category-icon">
@@ -213,7 +222,42 @@ export default function TechnicalSkills() {
                         ))}
                     </div>
                 </div>
-            </div>
+                {/* Network Category */}
+                <div className="skill-category shadow-box" data-aos="zoom-in">
+                    <div 
+                        className={`category-header ${activeCategory === 'network' ? 'active' : ''}`}
+                        onClick={() => toggleCategory('network')}
+                        onKeyPress={(e) => handleKeyPress(e, 'network')}
+                        role="button"
+                        tabIndex={0}
+                        aria-expanded={activeCategory === 'network'}
+                    >
+                        <div className="category-title">
+                            <i className="iconoir-server" />
+                            <h3>{t('skillsNetwork')}</h3>
+                        </div>
+                        <div className="category-icon">
+                            <i className={`iconoir-nav-arrow-${activeCategory === 'network' ? 'down' : 'right'}`} />
+                        </div>
+                    </div>
+                    
+                    <div className={`category-content ${activeCategory === 'network' ? 'expanded' : ''}`}>
+                        {skillsData.network.skills.map((skill, index) => (
+                            <div key={index} className="skill-item">
+                                <div className="skill-info">
+                                    <span className="skill-name">{skill.name}</span>
+                                    <span className="skill-percentage">{skill.percentage}%</span>
+                                </div>
+                                <div className="skill-progress">
+                                    <div 
+                                        className="skill-progress-bar" 
+                                        style={{ width: `${skill.percentage}%` }}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>            </div>
 
             <style jsx>{`
                 .technical-skills-section {

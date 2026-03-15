@@ -29,6 +29,7 @@
   "skillsBackend": "Back-end / Frameworks",
   "skillsDatabases": "Datenbanken & Modellierung",
   "skillsTools": "Tools & Workflow",
+  "skillsNetwork": "Netzwerkfähigkeiten",
   "aboutMe": "Über mich",
   "aboutSelfSummary": "Persönliches Profil",
   "aboutDescription": "Full-Stack Entwickler mit {{years}} Jahren Erfahrung, ansässig in Casablanca, Marokko. Motivierter und neugieriger Fachmann, entschlossen, technische Fähigkeiten zu vertiefen und durch Anpassungsfähigkeit zum Erfolg eines Unternehmens beizutragen. Spezialisiert auf Webentwicklung mit .NET Core, Laravel, und React sowie auf Datenbankarchitektur und DevOps-Praktiken.",
