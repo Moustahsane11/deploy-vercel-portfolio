@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import AOS from 'aos'
-import { resolvePortfolioPage } from '@/util/portfolioPaths'
+import { resolvePortfolioPage, slugFromAsPath } from '@/util/portfolioPaths'
 import Home from '@/pages/index'
 import About from '@/pages/about'
 import Credentials from '@/pages/credentials'
@@ -22,8 +22,9 @@ const PAGES = {
 
 export default function PortfolioRoute() {
     const router = useRouter()
-    const slug = Array.isArray(router.query.slug) ? router.query.slug : []
-    const page = resolvePortfolioPage(slug)
+    const slug = slugFromAsPath(router.asPath)
+    const querySlug = Array.isArray(router.query.slug) ? router.query.slug : []
+    const page = resolvePortfolioPage(slug) || resolvePortfolioPage(querySlug)
     const Page = page ? PAGES[page.key] : null
 
     useEffect(() => {
@@ -31,5 +32,5 @@ export default function PortfolioRoute() {
     }, [router.asPath])
 
     if (!router.isReady || !Page) return null
-    return <Page key={router.asPath} />
+    return <Page key={router.asPath} projectId={page.id} />
 }

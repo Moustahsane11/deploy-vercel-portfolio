@@ -6,7 +6,7 @@ const GUIDS = new Set(Object.values(PORTFOLIO_PROFILES).map((profile) => profile
 export function middleware(request) {
     const { pathname } = request.nextUrl
 
-    if (pathname === '/404') {
+    if (pathname === '/404' || pathname.startsWith('/_next/')) {
         return NextResponse.next()
     }
 

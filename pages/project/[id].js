@@ -7,7 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import data from "../../util/Projects.json"
 import ImageLightbox from "@/components/elements/ImageLightbox"
 
-export default function ProjectDetails() {
+export default function ProjectDetails({ projectId }) {
     const { t } = useTranslation('common')
     let Router = useRouter()
     const [project, setProject] = useState(null)
@@ -15,7 +15,7 @@ export default function ProjectDetails() {
     const [lightboxOpen, setLightboxOpen] = useState(false)
     const [lightboxIndex, setLightboxIndex] = useState(0)
     const { id: routeId, slug } = Router.query
-    const id = routeId || (Array.isArray(slug) && slug[0] === 'project' ? slug[1] : undefined)
+    const id = projectId || routeId || (Array.isArray(slug) && slug[0] === 'project' ? slug[1] : undefined)
 
     useEffect(() => {
         if (id) {

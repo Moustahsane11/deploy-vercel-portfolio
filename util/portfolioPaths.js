@@ -1,5 +1,24 @@
 const PROJECT_IDS = ['1', '2', '3', '4']
 const STATIC_PAGES = ['about', 'credentials', 'works', 'contact', 'service']
+const LOCALES = new Set(['fr', 'en', 'de'])
+
+function slugFromAsPath(asPath) {
+    const path = (asPath || '/').split('?')[0].split('#')[0]
+    const parts = path.split('/').filter(Boolean)
+
+    if (parts[0] === '_next' && parts[1] === 'data') {
+        const rest = parts.slice(3)
+        if (LOCALES.has(rest[0])) rest.shift()
+        if (rest.length) rest.shift()
+        const last = rest[rest.length - 1]
+        if (last && last.endsWith('.json')) rest[rest.length - 1] = last.slice(0, -5)
+        return rest
+    }
+
+    if (LOCALES.has(parts[0])) parts.shift()
+    if (parts.length) parts.shift()
+    return parts
+}
 
 function resolvePortfolioPage(slug) {
     const parts = Array.isArray(slug) ? slug : []
@@ -45,6 +64,7 @@ module.exports = {
     PROJECT_IDS,
     STATIC_PAGES,
     resolvePortfolioPage,
+    slugFromAsPath,
     prefixPortfolioHref,
     normalizePortfolioPath,
 }
