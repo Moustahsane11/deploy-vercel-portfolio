@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout"
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import data from "../util/project.json"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

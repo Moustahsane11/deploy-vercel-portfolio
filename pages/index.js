@@ -1,18 +1,20 @@
 import Layout from "@/components/layout/Layout"
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import TechnicalSkills from "@/components/elements/TechnicalSkills"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import CountUp from 'react-countup'
 import { useRouter } from "next/router"
+import { useSectionVisibility } from "@/util/PortfolioProfileContext"
 
 export default function Home() {
     const { t } = useTranslation('common')
     const router = useRouter()
+    const sections = useSectionVisibility()
+    const showProfessionalExperience = !sections.isProfile || sections.professionalExperience
 
-    // Calculate years of experience from start date (04/07/2023) to today with one decimal place
-    const yearsExperienceRaw = (Date.now() - new Date('2023-07-04').getTime()) / (1000 * 60 * 60 * 24 * 365)
-    const yearsExperience = Math.max(0, Number(yearsExperienceRaw.toFixed(1)))
+    // Contract ended at 3.3 years (July 2023 – October 2026)
+    const yearsExperience = 3.3
     const localeForNumber = router.locale === 'fr' ? 'fr-FR' : router.locale === 'de' ? 'de-DE' : 'en-US'
     const yearsExperienceText = yearsExperience.toLocaleString(
         localeForNumber,
@@ -37,7 +39,7 @@ export default function Home() {
                                     <div className="infos">
                                         <h4>{t('homeRole')}</h4>
                                         <h1>{t('name')}.</h1>
-                                        <p>{t('homeIntro', { years: yearsExperienceText })}</p>
+                                        <p>{showProfessionalExperience ? t('homeIntro', { years: yearsExperienceText }) : t('homeIntroAusbildung')}</p>
                                         <Link href="/about" className="about-btn">
                                             <img src="/assets/images/icon.svg" alt="Button" />
                                         </Link>
@@ -74,6 +76,7 @@ export default function Home() {
                                                 </div>
                                             </div>
                                         </div>
+                                        {(!sections.isProfile || sections.projects) && (
                                         <div data-aos="zoom-in">
                                             <div className="about-project-box info-box shadow-box h-full">
                                                 <Link className="overlay-link" href="/works" />
@@ -89,6 +92,7 @@ export default function Home() {
                                                 </div>
                                             </div>
                                         </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -146,28 +150,29 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Technical Skills Section */}
-                        <TechnicalSkills />
+                        {(!sections.isProfile || sections.technicalSkills) && <TechnicalSkills />}
 
                         <div className="row mt-24">
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-client-box info-box shadow-box">
                                     <div className="clients d-flex align-items-start gap-24 justify-content-center">
-                                        <div className="client-item">
-                                            <h1>
-                                                <CountUp 
-                                                    start={0} 
-                                                    end={yearsExperience} 
-                                                    decimals={1} 
-                                                    decimal={decimalChar}
-                                                    duration={2} 
-                                                    separator=","
-                                                    enableScrollSpy={true}
-                                                    scrollSpyOnce={true}
-                                                />
-                                            </h1>
-                                            <p>{t('homeYearsExp')}</p>
-                                        </div>
+                                        {showProfessionalExperience && (
+                                            <div className="client-item">
+                                                <h1>
+                                                    <CountUp 
+                                                        start={0} 
+                                                        end={yearsExperience} 
+                                                        decimals={1} 
+                                                        decimal={decimalChar}
+                                                        duration={2} 
+                                                        separator=","
+                                                        enableScrollSpy={true}
+                                                        scrollSpyOnce={true}
+                                                    />
+                                                </h1>
+                                                <p>{t('homeYearsExp')}</p>
+                                            </div>
+                                        )}
                                         <div className="client-item">
                                             <h1>
                                                 <CountUp 

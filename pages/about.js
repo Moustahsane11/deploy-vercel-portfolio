@@ -1,16 +1,18 @@
 import Layout from "@/components/layout/Layout"
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from "next/router"
+import { useSectionVisibility } from "@/util/PortfolioProfileContext"
 
 export default function About() {
     const { t } = useTranslation('common')
     const router = useRouter()
+    const sections = useSectionVisibility()
+    const showProfessionalExperience = !sections.isProfile || sections.professionalExperience
 
-    // Calculate years of experience from start date (04/07/2023) to today with one decimal place
-    const yearsExperienceRaw = (Date.now() - new Date('2023-07-04').getTime()) / (1000 * 60 * 60 * 24 * 365)
-    const yearsExperience = Math.max(0, Number(yearsExperienceRaw.toFixed(1)))
+    // Contract ended at 3.3 years (July 2023 – October 2026)
+    const yearsExperience = 3.3
     const localeForNumber = router.locale === 'fr' ? 'fr-FR' : router.locale === 'de' ? 'de-DE' : 'en-US'
     const yearsExperienceText = yearsExperience.toLocaleString(
         localeForNumber,
@@ -36,28 +38,58 @@ export default function About() {
                                 <div className="about-details-inner shadow-box">
                                     <img src="/assets/images/icon2.png" alt="Star" />
                                     <h1>{t('name')}</h1>
-                                    <p>{t('aboutDescription', { years: yearsExperienceText })}</p>
+                                    <p>{showProfessionalExperience ? t('aboutDescription', { years: yearsExperienceText }) : t('aboutDescriptionAusbildung')}</p>
                                 </div>
                             </div>
                         </div>
                         <div className="row mt-24">
                             <div className="col-md-6" data-aos="zoom-in">
-                                <div className="about-edc-exp about-experience shadow-box">
-                                    <h3>{t('experience')}</h3>
-                                    <ul>
-                                        <li>
-                                            <p className="date">{t('experience2Date')}</p>
-                                            <h2>{t('experience2Title')}</h2>
-                                            <p className="type">{t('experience2Company')}</p>
-                                        </li>
-                                        <li>
-                                            <p className="date">{t('experience1Date')}</p>
-                                            <h2>{t('experience1Title')}</h2>
-                                            <p className="type">{t('experience1Company')}</p>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {!sections.isProfile ? (
+                                    <div className="about-edc-exp about-experience shadow-box">
+                                        <h3>{t('experience')}</h3>
+                                        <ul>
+                                            <li>
+                                                <p className="date">{t('experience2Date')}</p>
+                                                <h2>{t('experience2Title')}</h2>
+                                                <p className="type">{t('experience2Company')}</p>
+                                            </li>
+                                            <li>
+                                                <p className="date">{t('experience1Date')}</p>
+                                                <h2>{t('experience1Title')}</h2>
+                                                <p className="type">{t('experience1Company')}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    <>
+                                        {sections.professionalExperience && (
+                                            <div className="about-edc-exp about-experience shadow-box">
+                                                <h3>{t('professionalExperience')}</h3>
+                                                <ul>
+                                                    <li>
+                                                        <p className="date">{t('experience1Date')}</p>
+                                                        <h2>{t('experience1Title')}</h2>
+                                                        <p className="type">{t('experience1Company')}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        )}
+                                        {sections.internships && (
+                                            <div className={`about-edc-exp about-experience shadow-box${sections.professionalExperience ? ' mt-24' : ''}`}>
+                                                <h3>{t('internships')}</h3>
+                                                <ul>
+                                                    <li>
+                                                        <p className="date">{t('experience2Date')}</p>
+                                                        <h2>{t('experience2Title')}</h2>
+                                                        <p className="type">{t('experience2Company')}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
                             </div>
+                            {(!sections.isProfile || sections.education) && (
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-edc-exp about-education shadow-box">
                                     <h3>{t('education')}</h3>
@@ -85,6 +117,7 @@ export default function About() {
                                     </ul>
                                 </div>
                             </div>
+                            )}
                         </div>
                         <div className="row mt-24">
                             <div className="col-md-12">

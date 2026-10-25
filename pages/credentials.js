@@ -1,17 +1,19 @@
 import Layout from "@/components/layout/Layout"
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from "next/router"
+import { useSectionVisibility } from "@/util/PortfolioProfileContext"
 
 export default function Home() {
   const { t } = useTranslation('common');
   const router = useRouter()
+  const sections = useSectionVisibility()
+  const showProfessionalExperience = !sections.isProfile || sections.professionalExperience
   const currentLocale = router?.locale || 'en'
 
-  // Calculate years of experience from start date (04/07/2023) to today with one decimal place
-  const yearsExperienceRaw = (Date.now() - new Date('2023-07-04').getTime()) / (1000 * 60 * 60 * 24 * 365)
-  const yearsExperience = Math.max(0, Number(yearsExperienceRaw.toFixed(1)))
+  // Contract ended at 3.3 years (July 2023 – October 2026)
+  const yearsExperience = 3.3
   const localeForNumber = currentLocale === 'fr' ? 'fr-FR' : currentLocale === 'de' ? 'de-DE' : 'en-US'
   const yearsExperienceText = yearsExperience.toLocaleString(
     localeForNumber,
@@ -44,23 +46,51 @@ export default function Home() {
                             <div className="credential-content flex-1">
                                 <div className="credential-about" data-aos="zoom-in">
                                     <h2>{t('aboutMe')}</h2>
-                                    <p>{t('aboutDescription', { years: yearsExperienceText })}</p>
+                                    <p>{showProfessionalExperience ? t('aboutDescription', { years: yearsExperienceText }) : t('aboutDescriptionAusbildung')}</p>
                                 </div>
-                                <div className="credential-edc-exp credential-experience">
-                                    <h2 data-aos="fade-up">{t('experience')}</h2>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>{t('experience1Date')}</h4>
-                                        <h3>{t('experience1Title')}</h3>
-                                        <h5>{t('experience1Company')}</h5>
-                                        <p>{t('experience1Description')}</p>
+                                {!sections.isProfile ? (
+                                    <div className="credential-edc-exp credential-experience">
+                                        <h2 data-aos="fade-up">{t('experience')}</h2>
+                                        <div className="credential-edc-exp-item" data-aos="zoom-in">
+                                            <h4>{t('experience1Date')}</h4>
+                                            <h3>{t('experience1Title')}</h3>
+                                            <h5>{t('experience1Company')}</h5>
+                                            <p>{t('experience1Description')}</p>
+                                        </div>
+                                        <div className="credential-edc-exp-item" data-aos="zoom-in">
+                                            <h4>{t('experience2Date')}</h4>
+                                            <h3>{t('experience2Title')}</h3>
+                                            <h5>{t('experience2Company')}</h5>
+                                            <p>{t('experience2Description')}</p>
+                                        </div>
                                     </div>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>{t('experience2Date')}</h4>
-                                        <h3>{t('experience2Title')}</h3>
-                                        <h5>{t('experience2Company')}</h5>
-                                        <p>{t('experience2Description')}</p>
-                                    </div>
-                                </div>
+                                ) : (
+                                    <>
+                                        {sections.professionalExperience && (
+                                            <div className="credential-edc-exp credential-experience">
+                                                <h2 data-aos="fade-up">{t('professionalExperience')}</h2>
+                                                <div className="credential-edc-exp-item" data-aos="zoom-in">
+                                                    <h4>{t('experience1Date')}</h4>
+                                                    <h3>{t('experience1Title')}</h3>
+                                                    <h5>{t('experience1Company')}</h5>
+                                                    <p>{t('experience1Description')}</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {sections.internships && (
+                                            <div className="credential-edc-exp credential-experience">
+                                                <h2 data-aos="fade-up">{t('internships')}</h2>
+                                                <div className="credential-edc-exp-item" data-aos="zoom-in">
+                                                    <h4>{t('experience2Date')}</h4>
+                                                    <h3>{t('experience2Title')}</h3>
+                                                    <h5>{t('experience2Company')}</h5>
+                                                    <p>{t('experience2Description')}</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+                                {(!sections.isProfile || sections.education) && (
                                 <div className="credential-edc-exp credential-education">
                                     <h2 data-aos="fade-up">{t('education')}</h2>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
@@ -88,6 +118,8 @@ export default function Home() {
                                         <p>{t('education1Description')}</p>
                                     </div>
                                 </div>
+                                )}
+                                {(!sections.isProfile || sections.technicalSkills) && (
                                 <div className="skills-wrap">
                                     <h2 data-aos="fade-up">{t('skills')}</h2>
                                     <div className="d-grid skill-items gap-24 flex-wrap">
@@ -133,6 +165,7 @@ export default function Home() {
                                         </div>                                                                    
                                     </div>
                                 </div>
+                                )}
                             </div>
                         </div>
                     </div>

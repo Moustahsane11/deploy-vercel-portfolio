@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout"
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { useTranslation } from 'next-i18next'
@@ -14,7 +14,8 @@ export default function ProjectDetails() {
     const [nextProject, setNextProject] = useState(null)
     const [lightboxOpen, setLightboxOpen] = useState(false)
     const [lightboxIndex, setLightboxIndex] = useState(0)
-    const { id } = Router.query
+    const { id: routeId, slug } = Router.query
+    const id = routeId || (Array.isArray(slug) && slug[0] === 'project' ? slug[1] : undefined)
 
     useEffect(() => {
         if (id) {

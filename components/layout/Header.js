@@ -1,12 +1,16 @@
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import { useRouter } from "next/router"
 import { useState, useRef, useEffect } from "react"
 import ThemeSwitch from "../elements/ThemeSwitch"
 import { useTranslation } from 'next-i18next';
+import { usePortfolioProfile } from '@/util/PortfolioProfileContext'
+import { normalizePortfolioPath } from '@/util/portfolioPaths'
 
 export default function Header() {
     const router = useRouter()
     const { t, i18n } = useTranslation('common')
+    const profile = usePortfolioProfile()
+    const currentPath = normalizePortfolioPath(router.asPath, profile?.guid)
     const [isToggled, setToggled] = useState(false)
     const [isLanguageOpen, setIsLanguageOpen] = useState(false)
     const languageDropdownRef = useRef(null)
@@ -109,10 +113,10 @@ export default function Header() {
 
                         <nav className={isToggled ? "navbar active" : "navbar"}>
                             <ul className="menu">
-                                <li className={router.pathname == "/" ? "active" : ""}><Link href="/">{t('navHome')}</Link></li>
-                                <li className={router.pathname == "/about" ? "active" : ""}><Link href="/about">{t('navAbout')}</Link></li>
-                                <li className={router.pathname == "/works" ? "active" : ""}><Link href="/works">{t('navWorks')}</Link></li>
-                                <li className={router.pathname == "/contact" ? "active" : ""}><Link href="/contact">{t('navContact')}</Link></li>
+                                <li className={currentPath === "/" ? "active" : ""}><Link href="/">{t('navHome')}</Link></li>
+                                <li className={currentPath === "/about" ? "active" : ""}><Link href="/about">{t('navAbout')}</Link></li>
+                                <li className={currentPath === "/works" ? "active" : ""}><Link href="/works">{t('navWorks')}</Link></li>
+                                <li className={currentPath === "/contact" ? "active" : ""}><Link href="/contact">{t('navContact')}</Link></li>
 
                                 {/* Language Switcher in Mobile Menu */}
                                 <li className="language-switcher-mobile">

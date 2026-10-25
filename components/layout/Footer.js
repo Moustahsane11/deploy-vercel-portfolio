@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "@/components/layout/SiteLink"
 import { useTranslation } from 'next-i18next'
 
 export default function Footer() {
